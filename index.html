@@ -1,0 +1,289 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Happy Birthday cocoooo 💖</title>
+
+  <!-- Tailwind -->
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <!-- AOS -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <!-- Custom -->
+  <link rel="stylesheet" href="happy.css">
+</head>
+<body id="pageBody" class="text-gray-900">
+
+  <!-- confetti / hearts canvas -->
+  <canvas id="confettiCanvas" class="fixed inset-0 pointer-events-none z-50"></canvas>
+
+  <!-- top controls -->
+  <div class="fixed top-4 left-4 z-50 flex items-center gap-3">
+    <button id="themeToggle" class="p-2 rounded-lg shadow-md bg-white/90" title="Toggle theme">🌙</button>
+    <div class="text-xs text-white/90 px-3 py-1 rounded-lg bg-pink-500/80">COOKIEEE</div>
+  </div>
+
+  <!-- header -->
+  <header class="text-center pt-12 pb-6 px-4">
+    <h1 id="mainTitle" class="text-4xl md:text-6xl font-extrabold leading-tight mb-4 title-shadow"></h1>
+    <p class="max-w-2xl mx-auto text-base md:text-lg text-pink-800/90">Today’s all about you — full of silly smiles, warm hugs & memories we keep close 💕</p>
+  </header>
+
+  <main class="max-w-6xl mx-auto px-4 pb-28">
+
+    <!-- PHOTO CAROUSEL -->
+    <section class="mt-6 relative" data-aos="fade-up">
+      <h2 class="text-xl font-semibold mb-3 text-pink-700/90">📸 Memories</h2>
+
+      <div class="carousel-viewport overflow-hidden rounded-2xl">
+        <div id="photoTrack" class="carousel-track flex gap-6 will-change-transform">
+          <!-- 9 photo cards -->
+          <div class="memory-card-card flex-shrink-0 w-1/3 md:w-1/3" data-index="0">
+            <div class="memory-card tilt-card">
+              <img src="images/memory1.jpeg" alt="Memory 1" loading="lazy">
+              <div class="p-4"><p>Our fabulous selfie day 😎💖</p></div>
+            </div>
+          </div>
+
+          <div class="memory-card-card flex-shrink-0 w-1/3 md:w-1/3" data-index="1">
+            <div class="memory-card tilt-card">
+              <img src="images/memory2.jpeg" alt="Memory 2" loading="lazy">
+              <div class="p-4"><p>That peaceful lakeside talk 🌊☁️</p></div>
+            </div>
+          </div>
+
+          <div class="memory-card-card flex-shrink-0 w-1/3 md:w-1/3" data-index="2">
+            <div class="memory-card tilt-card">
+              <img src="images/memory3.jpeg" alt="Memory 3" loading="lazy">
+              <div class="p-4"><p>Temple day – matching smiles &amp; bright vibes 🏵️✨</p></div>
+            </div>
+          </div>
+
+          <div class="memory-card-card flex-shrink-0 w-1/3 md:w-1/3" data-index="3">
+            <div class="memory-card tilt-card">
+              <img src="images/memory4.jpeg" alt="Memory 4" loading="lazy">
+              <div class="p-4"><p>That cute close-up moment 👀💞</p></div>
+            </div>
+          </div>
+
+          <div class="memory-card-card flex-shrink-0 w-1/3 md:w-1/3" data-index="4">
+            <div class="memory-card tilt-card">
+              <img src="images/memory5.jpeg" alt="Memory 5" loading="lazy">
+              <div class="p-4"><p>Holding a rose for you 🌹💫</p></div>
+            </div>
+          </div>
+
+          <div class="memory-card-card flex-shrink-0 w-1/3 md:w-1/3" data-index="5">
+            <div class="memory-card tilt-card">
+              <img src="images/memory6.jpeg" alt="Memory 6" loading="lazy">
+              <div class="p-4"><p>Laughs in the park, pure joy 💚🌿</p></div>
+            </div>
+          </div>
+
+          <div class="memory-card-card flex-shrink-0 w-1/3 md:w-1/3" data-index="6">
+            <div class="memory-card tilt-card">
+              <img src="images/memory7.jpeg" alt="Memory 7" loading="lazy">
+              <div class="p-4"><p>Night rides, endless talks 🌌💬</p></div>
+            </div>
+          </div>
+
+          <div class="memory-card-card flex-shrink-0 w-1/3 md:w-1/3" data-index="7">
+            <div class="memory-card tilt-card">
+              <img src="images/memory8.jpeg" alt="Memory 8" loading="lazy">
+              <div class="p-4"><p>Café vibes and cozy smiles ☕🤍</p></div>
+            </div>
+          </div>
+
+          <div class="memory-card-card flex-shrink-0 w-1/3 md:w-1/3" data-index="8">
+            <div class="memory-card tilt-card">
+              <img src="images/memory9.jpeg" alt="Memory 9" loading="lazy">
+              <div class="p-4"><p>Heart to heart — literally 💖🤝</p></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- photo controls -->
+      <div class="flex justify-end mt-3 gap-2">
+        <button id="photoPrev" class="px-3 py-1 rounded-lg bg-white/90 shadow-sm">◀</button>
+        <button id="photoNext" class="px-3 py-1 rounded-lg bg-white/90 shadow-sm">▶</button>
+      </div>
+    </section>
+
+    <!-- VIDEO CAROUSEL -->
+    <section class="mt-10 relative" data-aos="fade-up">
+      <h2 class="text-xl font-semibold mb-3 text-pink-700/90">🎞️ Our Moments in Motion 💕</h2>
+
+      <div class="carousel-viewport overflow-hidden rounded-2xl">
+        <div id="videoTrack" class="carousel-track flex gap-6 will-change-transform">
+          <!-- 9 videos autoplay muted in carousel -->
+          <!-- Each video element autoplay muted loop playsinline for mobile -->
+          <div class="video-card-card flex-shrink-0 w-1/3 md:w-1/3" data-index="0">
+            <div class="memory-card tilt-card">
+              <video class="carousel-video" muted playsinline autoplay loop preload="metadata">
+                <source src="videos/video1.mp4" type="video/mp4">
+              </video>
+              <div class="p-4"><p>some best unplanned ghummiii-#tekri</p></div>
+            </div>
+          </div>
+
+          <div class="video-card-card flex-shrink-0 w-1/3 md:w-1/3" data-index="1">
+            <div class="memory-card tilt-card">
+              <video class="carousel-video" muted playsinline autoplay loop preload="metadata">
+                <source src="videos/video2.mp4" type="video/mp4">
+              </video>
+              <div class="p-4"><p>wednesday vlogss 🌇</p></div>
+            </div>
+          </div>
+
+          <div class="video-card-card flex-shrink-0 w-1/3 md:w-1/3" data-index="2">
+            <div class="memory-card tilt-card">
+              <video class="carousel-video" muted playsinline autoplay loop preload="metadata">
+                <source src="videos/video3.mp4" type="video/mp4">
+              </video>
+              <div class="p-4"><p>iss reel ke chakkar mai hi toh kaand hua tha 💃</p></div>
+            </div>
+          </div>
+
+          <div class="video-card-card flex-shrink-0 w-1/3 md:w-1/3" data-index="3">
+            <div class="memory-card tilt-card">
+              <video class="carousel-video" muted playsinline autoplay loop preload="metadata">
+                <source src="videos1/video4.mp4" type="video/mp4">
+              </video>
+              <div class="p-4"><p>cocojii vlogging mode ON</p></div>
+            </div>
+          </div>
+
+          <div class="video-card-card flex-shrink-0 w-1/3 md:w-1/3" data-index="4">
+            <div class="memory-card tilt-card">
+              <video class="carousel-video" muted playsinline autoplay loop preload="metadata">
+                <source src="videos1/video5.mp4" type="video/mp4">
+              </video>
+              <div class="p-4"><p>8 OCTOBER ko janamdin tha mera 😝</p></div>
+            </div>
+          </div>
+
+          <div class="video-card-card flex-shrink-0 w-1/3 md:w-1/3" data-index="5">
+            <div class="memory-card tilt-card">
+              <video class="carousel-video" muted playsinline autoplay loop preload="metadata">
+                <source src="videos1/video6.mp4" type="video/mp4">
+              </video>
+              <div class="p-4"><p>saal ka akhiri pizzaa 🚗</p></div>
+            </div>
+          </div>
+
+          <div class="video-card-card flex-shrink-0 w-1/3 md:w-1/3" data-index="6">
+            <div class="memory-card tilt-card">
+              <video class="carousel-video" muted playsinline autoplay loop preload="metadata">
+                <source src="videos1/video7.mp4" type="video/mp4">
+              </video>
+              <div class="p-4"><p>arey aap patel nagar bhi aate the 🎂</p></div>
+            </div>
+          </div>
+
+          <div class="video-card-card flex-shrink-0 w-1/3 md:w-1/3" data-index="7">
+            <div class="memory-card tilt-card">
+              <video class="carousel-video" muted playsinline autoplay loop preload="metadata">
+                <source src="videos1/video8.mp4" type="video/mp4">
+              </video>
+              <div class="p-4"><p>new market jana aur waha se kuchh na lekr aana</p></div>
+            </div>
+          </div>
+
+          <div class="video-card-card flex-shrink-0 w-1/3 md:w-1/3" data-index="8">
+            <div class="memory-card tilt-card">
+              <video class="carousel-video" muted playsinline autoplay loop preload="metadata">
+                <source src="videos/video9.mp4" type="video/mp4">
+              </video>
+              <div class="p-4"><p>apka pehla bday cookiee as a bestfriend ke saath</p></div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="flex justify-end mt-3 gap-2">
+        <button id="videoPrev" class="px-3 py-1 rounded-lg bg-white/90 shadow-sm">◀</button>
+        <button id="videoNext" class="px-3 py-1 rounded-lg bg-white/90 shadow-sm">▶</button>
+      </div>
+    </section>
+    <!-- 🎁 Surprise Video Section -->
+<section id="surpriseSection" class="text-center py-16 bg-gradient-to-r from-blue-700 via-blue-800 to-blue-900 text-white">
+  <h2 class="text-4xl font-bold mb-6 animate-bounce">🎁 A Little Surprise for You, Cocoooo 💖</h2>
+  <p class="text-lg mb-6">Click the button below when you’re ready for one more memory 😚</p>
+
+  <button id="revealBtn" 
+          class="bg-white text-blue-700 font-semibold px-6 py-3 rounded-full shadow-lg hover:scale-105 transition-all duration-300">
+    Reveal Surprise 🎬
+  </button>
+
+  <div id="surpriseVideoContainer" class="hidden mt-10 fade-in flex justify-center px-4">
+    <video id="surpriseVideo"
+           class="rounded-2xl shadow-2xl border-4 border-blue-400 w-full max-w-3xl"
+           controls autoplay muted loop>
+      <source src="videos/surprise.mp4" type="video/mp4">
+    </video>
+  </div>
+</section>
+
+
+    <!-- long note -->
+    <section class="text-center mt-12 py-10 rounded-3xl bg-white/60 backdrop-blur-md shadow-inner" data-aos="fade-up">
+      <h2 class="text-3xl font-semibold mb-4">💌 A Note From My Heart</h2>
+      <p class="max-w-3xl mx-auto text-lg text-pink-700/90 px-4">
+        Tum meri life ka wo hissa ho jo har din ko special bana deta hai. Har photo, har memory ek kahani hai hamari dosti aur care ki.
+        Thank you for being <em>you</em> — kind, caring, thoda pagal, aur sabse zyada pyara insan. 💕<br><br>
+        Happy Birthday cocoooo! Tumhara har din khubsoorat ho — aaj aur hamesha. 🎂🌸<br><br>
+
+        kuchh shhabd apke liye hindi mai ....<br><br>
+        झगड़े तो हमारे रोज़ के हैं, पर सुलह भी हमसे बेहतर कोई नहीं कर सकता।
+हम लड़ते हैं, रूठते हैं, पर एक-दूसरे की फ़िक्र हमेशा रहती है।
+हमारी दोस्ती की असली पहचान ही है — भरोसा, समझ और साथ।
+तेरी वैल्यू मेरी लाइफ में शब्दों में नहीं बता सकती…
+सच कहूँ तो मेरा सब कुछ कहीं न कहीं तुझ पर ही टिका है।
+तेरे बिना सब अधूरा लगता है।
+बस यूँ ही हमेशा मेरे साथ रहना —
+Happy Birthday kuchipuuuuu💖🧿
+      </p>
+    </section>
+
+  </main>
+
+  <footer class="text-center py-6 text-sm text-gray-700">Made with 💖 and memories just for you.</footer>
+
+  <!-- PHOTO MODAL -->
+  <div id="photoModal" class="fixed inset-0 z-60 hidden items-center justify-center bg-black/60 p-4">
+    <div class="max-w-4xl w-full bg-white rounded-2xl overflow-hidden shadow-2xl relative">
+      <button id="photoModalClose" class="absolute top-4 right-4 bg-white/70 px-3 py-1 rounded-full shadow-sm">✕</button>
+      <div class="md:flex">
+        <img id="photoModalImg" src="" alt="Memory large" class="w-full md:w-1/2 object-cover h-80 md:h-auto">
+        <div class="p-6 md:w-1/2">
+          <h3 id="photoModalTitle" class="text-2xl font-bold mb-3">Memory</h3>
+          <p id="photoModalText" class="text-gray-700 leading-relaxed"></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- VIDEO MODAL -->
+  <div id="videoModal" class="fixed inset-0 z-70 hidden items-center justify-center bg-black/70 p-4">
+    <div class="max-w-4xl w-full bg-black rounded-2xl overflow-hidden shadow-2xl relative">
+      <button id="videoModalClose" class="absolute top-4 right-4 bg-white/80 text-black px-3 py-1 rounded-full shadow-sm">✕</button>
+      <video id="videoModalPlayer" class="w-full h-auto" controls playsinline>
+        <source id="videoModalSource" src="" type="video/mp4">
+      </video>
+    </div>
+  </div>
+
+  <!-- music button -->
+  <div id="musicBtn" class="fixed bottom-6 right-6 w-16 h-16 rounded-full shadow-lg flex items-center justify-center z-50" title="Play / Pause (M)">
+    <span id="musicIcon" class="text-2xl">🎵</span>
+    <audio id="bgMusic" src="images/Phir Kabhi.mp3" loop></audio>
+  </div>
+  
+
+  <!-- scripts -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="coco.js"></script>
+</body>
+</html>
